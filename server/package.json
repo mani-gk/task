@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Display movies query onto rendered view using React Stack ",
   "scripts": {
-    "start": "npm run start:dev",
-    "start:dev": "cross-env NODE_PATH=./build NODE_ENV=development node ./build/src/app.js static=\"../../public-html\"",
-    "start:prod": "cross-env NODE_PATH=./build NODE_ENV=development node ./build/src/app.js static=\"../../../public-html\""
+    "start": "node ./build/src/app.js"
   },
   "dependencies": {
     "body-parser": "~1.17.1",

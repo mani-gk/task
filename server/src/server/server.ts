@@ -3,7 +3,7 @@ import { Server as HttpServer } from 'http'
 import * as request from 'request-promise'
 
 import { MongooseDb } from '../db/connection'
-import { serverVersion, SystemUrlPath } from './common'
+import { SystemUrlPath } from './common'
 import { errorMiddleware, notFound404 } from './middlewares/error'
 import { BootConfigModel } from './models'
 
@@ -46,7 +46,6 @@ export class Server {
 
         //These are always available and do not go through any middleware
         app.use(SystemUrlPath.health, (req, res) => { res.status(200).send() })
-        app.use(SystemUrlPath.version, (req, res) => { res.send({ version: serverVersion }) })
         //Add all the middlewares and routes
         this.config.middleware.forEach(m => m(app, this.config.serverConfig))
         this.config.routes.forEach(r => r(app, this.config.serverConfig))
@@ -62,8 +61,9 @@ export class Server {
     }
 
     async boot(): Promise<void> {
-        const { httpPort, dbConfig } = this.config.serverConfig
-
+        const { dbConfig } = this.config.serverConfig
+        //Env varibale has first preference
+        let httpPort = process.env.PORT || this.config.serverConfig.httpPort
         const message = `Starting server on port ${httpPort}...`
         console.info({ message })
         try {
@@ -77,7 +77,8 @@ export class Server {
 
         try {
             const app = this.expressApp()
-            this.server = await this.listen(app, httpPort)
+            //TODO
+            this.server = await this.listen(app, typeof httpPort == "string" ? parseInt(httpPort) : httpPort)
         } catch (err) {
             const message = `Unable to start server at port ${httpPort}. ${err.message}`
             console.error(message)
