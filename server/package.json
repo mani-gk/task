@@ -1,0 +1,52 @@
+{
+  "name": "mern_assessment",
+  "version": "1.0.0",
+  "description": "Display movies query onto rendered view using React Stack ",
+  "scripts": {
+    "start": "npm run start:dev",
+    "start:dev": "cross-env NODE_PATH=./build NODE_ENV=development node ./build/src/app.js static=\"../../public-html\"",
+    "start:prod": "cross-env NODE_PATH=./build NODE_ENV=development node ./build/src/app.js static=\"../../../public-html\""
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "cross-env": "5.2.0",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "lodash": "4.17.15",
+    "mongoose": "^5.5.2",
+    "morgan": "~1.8.1",
+    "nodemon": "^1.18.11",
+    "pug": "~2.0.0-beta11",
+    "request": "2.88.0",
+    "request-promise": "4.2.4",
+    "serve-favicon": "~2.4.2",
+    "strip-json-comments": "3.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mani-gk/task.git"
+  },
+  "keywords": [
+    "node.js",
+    "React",
+    "MongoDB",
+    "Mongoose"
+  ],
+  "author": "mani.gk@volteo.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mani-gk/task/issues"
+  },
+  "homepage": "https://github.com/mani-gk/task#readme",
+  "devDependencies": {
+    "@types/cookie-parser": "1.4.1",
+    "@types/lodash": "4.14.136",
+    "@types/mongoose": "5.5.9",
+    "@types/morgan": "1.7.36",
+    "@types/node": "12.6.8",
+    "@types/request-promise": "4.1.44",
+    "@types/strip-json-comments": "3.0.0",
+    "typescript": "3.5.3"
+  }
+}
