@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Display movies query onto rendered view using React Stack ",
   "scripts": {
+    "build": "tsc",
     "start": "node ./build/src/app.js"
   },
   "dependencies": {
